@@ -1,0 +1,19 @@
+.header {
+  color: rgb(31, 149, 209);
+  padding: 40px;
+  background: #eeeeee;
+  font-size: 20px;
+}
+.header li {
+  display: inline;
+  margin-right: 5px;
+  padding: 3px;
+
+}
+.header li:hover {
+  background-color: #e4e4e4;
+}
+
+.active-page-link {
+  font-weight: bold;
+}

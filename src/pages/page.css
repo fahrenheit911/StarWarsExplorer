@@ -1,0 +1,10 @@
+.page {
+  display: flex;
+  flex-wrap: wrap;
+}
+.container {
+  display: flex;
+  margin: 0 5px;
+  flex-grow: 2;
+  flex-wrap: wrap;
+}
