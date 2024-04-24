@@ -12,15 +12,10 @@
   background-color: #ffffff;
   margin-left: auto;
   margin-right: auto;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -khtml-border-radius: 50%;
 }
 .person-card {
-  width: 195px;
+  width: 200px;
   height: 220px;
-  justify-content: space-between;
-  align-items: center;
   border: solid #c4c2c2 2px;
   border-radius: 5px;
   margin: 5px;

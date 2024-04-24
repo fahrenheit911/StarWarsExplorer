@@ -1,29 +1,34 @@
 import React, {useEffect} from 'react';
-import {Person} from '../components/Person/Person';
 import {useDispatch, useSelector} from 'react-redux';
-import {dataLoad} from '../redux/dataLoad.js';
+import Person from '../components/Person';
+import Button from '../components/Button';
+import {dataLoad} from '../redux/dataLoad';
 
-//import people from "../people.json";
 import './page.css';
 
 export const People = () => {
-  const people = useSelector(state => state.data);
+  const people = useSelector(state => state.people.data.results);
   const dispatch = useDispatch();
-
   useEffect(() => {
-    function load() {
-      dispatch(dataLoad);
-    }
-    load();
+    dispatch(dataLoad);
   }, [dispatch]);
 
-  console.log(people);
+  useEffect(() => {
+    dispatch(dataLoad);
+  }, [dispatch]);
+
+  const handleClick = () => {
+    console.log('Button clicked!');
+  };
 
   return (
-    <section className="container">
-      {people.map((person, i) => (
-        <Person key={person[i]} {...person} />
-      ))}
-    </section>
+    <>
+      <section className="container">
+        {people.map((person, i) => (
+          <Person key={person.name} {...person} />
+        ))}
+      </section>
+      <Button title="Load more" onClick={handleClick} />
+    </>
   );
 };

@@ -1,6 +1,5 @@
-import React from "react";
-import { Planet } from "../components/Planet/Planet";
-//import "./Page.css";
+import React from 'react';
+import Planet from '../components/Planet';
 
 export const Planets = () => {
   return <Planet />;
