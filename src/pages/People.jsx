@@ -13,10 +13,6 @@ export const People = () => {
     dispatch(dataLoad);
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(dataLoad);
-  }, [dispatch]);
-
   const handleClick = () => {
     console.log('Button clicked!');
   };

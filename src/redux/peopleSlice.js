@@ -3,7 +3,12 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
   isLoading: false,
   error: null,
-  data: [],
+  data: {
+    count: null,
+    next: '',
+    previous: null,
+    results: [],
+  },
 };
 
 const peopleSlice = createSlice({
