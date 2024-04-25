@@ -7,14 +7,14 @@ import {dataLoad} from '../redux/dataLoad';
 import './page.css';
 
 export const People = () => {
-  const people = useSelector(state => state.people.data.results);
+  const people = useSelector(state => state?.people?.data?.results);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(dataLoad);
   }, [dispatch]);
 
   const handleClick = () => {
-    console.log('Button clicked!');
+    console.log('People button clicked!');
   };
 
   return (
