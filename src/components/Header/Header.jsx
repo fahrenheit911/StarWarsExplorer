@@ -4,18 +4,26 @@ import './header.css';
 
 export const Header = () => {
   return (
-    <nav>
-      <ul className="header">
-        <li>
-          <NavLink to="/people">People</NavLink>
-        </li>
-        <li>
-          <NavLink to="/planets">Planets</NavLink>
-        </li>
-        <li>
-          <NavLink to="/starships">Starships</NavLink>
-        </li>
-      </ul>
-    </nav>
+    <header className="header">
+      <nav className="menu">
+        <ul className="menu__list">
+          <li className="menu__list-item">
+            <NavLink className="menu__link" to="/people">
+              People
+            </NavLink>
+          </li>
+          <li className="menu__list-item">
+            <NavLink className="menu__link" to="/planets">
+              Planets
+            </NavLink>
+          </li>
+          <li className="menu__list-item">
+            <NavLink className="menu__link" to="/starships">
+              Starships
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 };
