@@ -1,0 +1,23 @@
+.person {
+  display: flex;
+}
+.person__card {
+  width: 200px;
+  height: 220px;
+  border: solid #c4c2c2 2px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+}
+.person__data {
+  padding: 20px 5px;
+}
+.person__circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: solid #c4c2c2 2px;
+  background-color: #ffffff;
+  margin-left: auto;
+  margin-right: auto;
+}

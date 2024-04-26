@@ -1,0 +1,20 @@
+.header {
+  color: #1f95d1;
+  padding: 40px;
+  background: #eeeeee;
+  font-size: 20px;
+}
+.menu__list-item {
+  display: inline;
+  margin-right: 5px;
+  padding: 3px;
+}
+.menu__list-item:hover {
+  background-color: #e4e4e4;
+}
+.menu__list-item__active {
+  font-weight: bold;
+}
+.menu__link {
+  text-decoration: none;
+}
