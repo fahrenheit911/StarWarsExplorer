@@ -3,13 +3,13 @@ import Planet from '../components/Planet';
 import Button from '../components/Button';
 
 export const Planets = () => {
-  const handleClick = () => {
+  const loadMore = () => {
     console.log('Planets button clicked!');
   };
   return (
     <section>
       <Planet />
-      <Button title="Load more" onClick={handleClick} />
+      <Button title="Load more" onClick={loadMore} />
     </section>
   );
 };

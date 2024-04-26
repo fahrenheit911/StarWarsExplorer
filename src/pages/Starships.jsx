@@ -3,12 +3,12 @@ import Starship from '../components/Starship';
 import Button from '../components/Button';
 
 export const Starships = () => {
-  const handleClick = () => {
+  const loadMore = () => {
     console.log('Starships button clicked!');
   };
   return (
     <section>
-      <Starship /> <Button title="Load more" onClick={handleClick} />
+      <Starship /> <Button title="Load more" onClick={loadMore} />
     </section>
   );
 };

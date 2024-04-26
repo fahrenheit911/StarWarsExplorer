@@ -12,7 +12,7 @@
 .person__data {
   padding: 20px 5px;
 }
-.circle {
+.person__circle {
   width: 100px;
   height: 100px;
   border-radius: 50%;

@@ -3,7 +3,7 @@ import './button.css';
 
 export const Button = ({onClick, title}) => {
   return (
-    <button className="button" aria-label="Load more" onClick={onClick}>
+    <button className="button" aria-label={title} onClick={onClick}>
       {title}
     </button>
   );

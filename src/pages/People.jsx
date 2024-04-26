@@ -13,18 +13,18 @@ export const People = () => {
     dispatch(dataLoad);
   }, [dispatch]);
 
-  const handleClick = () => {
+  const loadMore = () => {
     console.log('People button clicked!');
   };
 
   return (
     <>
       <section className="container">
-        {people.map((person, i) => (
+        {people.map(person => (
           <Person key={person.name} {...person} />
         ))}
       </section>
-      <Button title="Load more" onClick={handleClick} />
+      <Button title="Load more" onClick={loadMore} />
     </>
   );
 };

@@ -1,8 +1,0 @@
-@font-face {
-  font-family: 'Comic Neue';
-  src: url(./fonts/ComicNeue-Italic.ttf) format('truetype');
-}
-
-body {
-  font-family: 'Comic Neue', cursive;
-}

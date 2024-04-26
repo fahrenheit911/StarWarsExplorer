@@ -6,7 +6,7 @@ const initialState = {
   data: {
     count: null,
     next: '',
-    previous: null,
+    previous: '',
     results: [],
   },
 };
