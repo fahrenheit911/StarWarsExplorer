@@ -7,8 +7,11 @@ export const Starships = () => {
     console.log('Starships button clicked!');
   };
   return (
-    <section>
-      <Starship /> <Button title="Load more" onClick={loadMore} />
-    </section>
+    <>
+      <section>
+        <Starship />
+      </section>
+      <Button title="Load more" onClick={loadMore} />
+    </>
   );
 };
