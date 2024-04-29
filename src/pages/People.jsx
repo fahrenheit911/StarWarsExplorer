@@ -11,7 +11,6 @@ export const People = () => {
 
   const people = useSelector(state => state?.people?.data?.results);
   const loading = useSelector(state => state?.people?.isLoading);
-  const totalCount = useSelector(state => state?.people?.data?.count);
   const nextPage = useSelector(state => state?.people?.data?.next);
 
   const dispatch = useDispatch();
@@ -32,9 +31,7 @@ export const People = () => {
           <Person key={person.name} {...person} />
         ))}
       </section>
-      {count < totalCount && (
-        <Button title={loading ? 'Loading...' : 'Load more'} onClick={loadMore} />
-      )}
+      {count < 80 && <Button title={loading ? 'Loading...' : 'Load more'} onClick={loadMore} />}
     </>
   );
 };

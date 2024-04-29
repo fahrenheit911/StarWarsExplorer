@@ -2,15 +2,15 @@
   display: flex;
 }
 .person__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   width: 200px;
   height: 220px;
   border: solid #c4c2c2 2px;
   border-radius: 5px;
   margin: 5px;
   padding: 5px;
-}
-.person__data {
-  padding: 20px 5px;
 }
 .person__circle {
   width: 100px;

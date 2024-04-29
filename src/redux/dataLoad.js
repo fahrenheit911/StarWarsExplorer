@@ -23,7 +23,10 @@ export const nextDataLoad = nextPage => async dispatch => {
     if (response.ok) {
       const newData = await response.json();
       dispatch(updateLoadState({isLoading: true, error: null}));
-      dispatch(updateData(newData));
+
+      // Вот тут не знаю, правильно ли я передаю старый стейт (думаю, что нет)
+
+      dispatch(updateData(pre => [...pre, ...newData]));
     } else {
       dispatch(updateLoadState({isLoading: false, error: 'HTTP error ' + response.status}));
     }
