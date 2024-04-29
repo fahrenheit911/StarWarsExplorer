@@ -1,9 +1,9 @@
 import {updateLoadState, updateData} from './peopleSlice.js';
 
-export async function dataLoad(dispatch) {
+export const dataLoad = () => async dispatch => {
   try {
     dispatch(updateLoadState({state: true, error: null}));
-    const response = await fetch('https://swapi.py4e.com/api/people');
+    const response = await fetch('https://swapi.py4e.com/api/people/?page=1');
     if (response.ok) {
       const data = await response.json();
       dispatch(updateLoadState({isLoading: true, error: null}));
@@ -14,4 +14,20 @@ export async function dataLoad(dispatch) {
   } catch (err) {
     dispatch(updateLoadState({isLoading: false, error: err.message}));
   }
-}
+};
+
+export const nextDataLoad = nextPage => async dispatch => {
+  try {
+    dispatch(updateLoadState({state: true, error: null}));
+    const response = await fetch(nextPage);
+    if (response.ok) {
+      const newData = await response.json();
+      dispatch(updateLoadState({isLoading: true, error: null}));
+      dispatch(updateData(newData));
+    } else {
+      dispatch(updateLoadState({isLoading: false, error: 'HTTP error ' + response.status}));
+    }
+  } catch (err) {
+    dispatch(updateLoadState({isLoading: false, error: err.message}));
+  }
+};
