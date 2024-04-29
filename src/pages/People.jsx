@@ -9,8 +9,11 @@ import './page.css';
 export const People = () => {
   const [newData, setNewData] = useState([]);
   const [page, setPage] = useState(1);
+  const [count, setCount] = useState(null);
 
   const people = useSelector(state => state?.people?.data?.results);
+  const loading = useSelector(state => state?.people?.isLoading);
+  const totalCount = useSelector(state => state?.people?.data?.count);
 
   const dispatch = useDispatch();
 
@@ -20,6 +23,7 @@ export const People = () => {
         const response = await fetch(`https://swapi.py4e.com/api/people/?page=${page}`);
 
         const newData = await response.json();
+        setCount(count + 10);
 
         setNewData(people => [...people, ...newData.results]);
       } catch (error) {}
@@ -38,7 +42,9 @@ export const People = () => {
           <Person key={person.name} {...person} />
         ))}
       </section>
-      <Button title="Load more" onClick={() => setPage(page + 1)} />
+      {count < totalCount && (
+        <Button title={loading ? 'Loading...' : 'Load more'} onClick={() => setPage(page + 1)} />
+      )}
     </>
   );
 };
