@@ -1,9 +1,9 @@
-import {updateLoadState, updateData} from './peopleSlice.js';
+import {updateLoadState, updateData, updateNewData} from './peopleSlice.js';
 
 export const dataLoad = () => async dispatch => {
   try {
     dispatch(updateLoadState({state: true, error: null}));
-    const response = await fetch('https://swapi.py4e.com/api/people/?page=1');
+    const response = await fetch('https://swapi.py4e.com/api/people');
     if (response.ok) {
       const data = await response.json();
       dispatch(updateLoadState({isLoading: true, error: null}));
@@ -16,17 +16,15 @@ export const dataLoad = () => async dispatch => {
   }
 };
 
-export const nextDataLoad = nextPage => async dispatch => {
+export const nextDataLoad = nextUrl => async dispatch => {
   try {
     dispatch(updateLoadState({state: true, error: null}));
-    const response = await fetch(nextPage);
+    const response = await fetch(nextUrl);
+
     if (response.ok) {
       const newData = await response.json();
       dispatch(updateLoadState({isLoading: true, error: null}));
-
-      // Вот тут не знаю, правильно ли я передаю старый стейт (думаю, что нет)
-
-      dispatch(updateData(pre => [...pre, ...newData]));
+      dispatch(updateNewData(newData));
     } else {
       dispatch(updateLoadState({isLoading: false, error: 'HTTP error ' + response.status}));
     }

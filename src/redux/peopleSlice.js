@@ -22,9 +22,15 @@ const peopleSlice = createSlice({
     updateData: (state, action) => {
       state.data = action.payload;
     },
+    updateNewData: (state, action) => {
+      state.data = {
+        ...action.payload, //TODO: rewrite this line (add every key for data obj)
+        results: [...state.data.results, ...action.payload.results],
+      };
+    },
   },
 });
 
-export const {updateLoadState, updateData} = peopleSlice.actions;
+export const {updateLoadState, updateData, updateNewData} = peopleSlice.actions;
 
 export default peopleSlice.reducer;

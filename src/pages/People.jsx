@@ -7,11 +7,9 @@ import {dataLoad, nextDataLoad} from '../redux/dataLoad';
 import './page.css';
 
 export const People = () => {
-  const [count, setCount] = useState(null);
-
   const people = useSelector(state => state?.people?.data?.results);
   const loading = useSelector(state => state?.people?.isLoading);
-  const nextPage = useSelector(state => state?.people?.data?.next);
+  const nextUrl = useSelector(state => state?.people?.data?.next);
 
   const dispatch = useDispatch();
 
@@ -20,8 +18,7 @@ export const People = () => {
   }, [dispatch]);
 
   const loadMore = () => {
-    dispatch(nextDataLoad(nextPage));
-    setCount(count + 10);
+    dispatch(nextDataLoad(nextUrl));
   };
 
   return (
@@ -31,7 +28,7 @@ export const People = () => {
           <Person key={person.name} {...person} />
         ))}
       </section>
-      {count < 80 && <Button title={loading ? 'Loading...' : 'Load more'} onClick={loadMore} />}
+      {nextUrl && <Button title={loading ? 'Loading...' : 'Load more'} onClick={loadMore} />}
     </>
   );
 };
