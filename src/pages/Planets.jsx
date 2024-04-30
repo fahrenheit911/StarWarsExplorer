@@ -7,11 +7,11 @@ export const Planets = () => {
     console.log('Planets button clicked!');
   };
   return (
-    <>
+    <article>
       <section>
         <Planet />
       </section>
       <Button title="Load more" onClick={loadMore} />
-    </>
+    </article>
   );
 };

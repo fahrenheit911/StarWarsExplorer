@@ -1,6 +1,6 @@
 import {updateLoadState, updateData, updateNewData} from './peopleSlice.js';
 
-export const dataLoad = () => async dispatch => {
+export const loadData = () => async dispatch => {
   try {
     dispatch(updateLoadState({state: true, error: null}));
     const response = await fetch('https://swapi.py4e.com/api/people');
@@ -16,7 +16,7 @@ export const dataLoad = () => async dispatch => {
   }
 };
 
-export const nextDataLoad = nextUrl => async dispatch => {
+export const nextLoadData = nextUrl => async dispatch => {
   try {
     dispatch(updateLoadState({state: true, error: null}));
     const response = await fetch(nextUrl);

@@ -24,7 +24,9 @@ const peopleSlice = createSlice({
     },
     updateNewData: (state, action) => {
       state.data = {
-        ...action.payload, //TODO: rewrite this line (add every key for data obj)
+        count: action.payload.count,
+        next: action.payload.next,
+        previous: action.payload.previous,
         results: [...state.data.results, ...action.payload.results],
       };
     },
