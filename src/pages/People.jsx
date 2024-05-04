@@ -25,9 +25,6 @@ export const People = () => {
     dispatch(nextLoadData(nextUrl));
   };
 
-  const onClose = e => {
-    setIsOpen(false);
-  };
   const clickPerson = (name, index) => {
     if (people[index].name === name) {
       setPersonInfo(people[index]);
@@ -49,7 +46,7 @@ export const People = () => {
           disabled={loading}
         />
       )}
-      {isOpen && <ModalWindow onClose={onClose} {...personInfo} />}
+      {isOpen && <ModalWindow onClose={() => setIsOpen(false)} {...personInfo} />}
     </article>
   );
 };

@@ -8,7 +8,7 @@
   overflow: hidden;
   z-index: 999;
 }
-.modal__container {
+.modal__wrapper {
   position: absolute;
   top: 0;
   left: 0;
@@ -21,21 +21,70 @@
 .modal__content {
   position: relative;
   width: 100%;
-  max-width: 800px;
-  height: 500px;
+  max-width: 700px;
+  height: 400px;
   margin: 20px;
+  padding: 5px;
   border: solid #c4c2c2 2px;
   border-radius: 5px;
   background-color: #ffffff;
   transform: translateY(-100px);
 }
-.modal__close-button {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 30px;
-  height: 30px;
-  background: url('./icon-close.svg');
-  border: 0;
-  cursor: pointer;
+.modal__content-title {
+  text-align: center;
+  font-size: larger;
+  padding: 5px;
+}
+.modal__container {
+  display: flex;
+  margin-top: 20px;
+}
+.modal__container-block-left {
+  display: flex;
+  flex-direction: column;
+  margin-right: 60px;
+  margin-left: 25px;
+}
+.modal__container-block-left-top {
+  border-bottom: solid 1px;
+  margin-bottom: 25px;
+}
+.modal__container-block-left-headline {
+  font-size: large;
+  padding-bottom: 20px;
+}
+.modal__container-block-right {
+  display: flex;
+  flex-direction: column;
+}
+.block__homeword {
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 1px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.block__films {
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 1px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.block__vehicles {
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 1px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.block__starships {
+  display: flex;
+  justify-content: center;
+}
+.list {
+  padding-bottom: 15px;
+}
+.link {
+  margin-left: 10px;
 }

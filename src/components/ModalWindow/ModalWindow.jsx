@@ -2,13 +2,93 @@ import React from 'react';
 
 import './modalwindow.css';
 
-export const ModalWindow = ({onClose, name}) => {
+export const ModalWindow = ({
+  onClose,
+  name,
+  hair_color,
+  skin_color,
+  eye_color,
+  gender,
+  homeworld,
+  films,
+  height,
+  mass,
+  vehicles,
+  starships,
+}) => {
+  const onWrapperClick = e => {
+    if (e.target.classList.contains('modal__wrapper')) onClose();
+  };
   return (
     <div className="modal">
-      <div className="modal__container">
+      <div className="modal__wrapper" onClick={onWrapperClick}>
         <div className="modal__content">
-          <button className="modal__close-button" onClick={() => onClose()}></button>
-          {name}
+          <h1 className="modal__content-title">{name}</h1>
+          <hr></hr>
+          <div className="modal__container">
+            <div className="modal__container-block-left">
+              <div className="modal__container-block-left-top">
+                <div className="modal__container-block-left-headline">Apperance</div>
+                <ul className="lists">
+                  <li className="list">Hair color: {hair_color}</li>
+                  <li className="list">Skin color: {skin_color}</li>
+                  <li className="list">Eye color: {eye_color}</li>
+                  <li className="list">Gender: {gender}</li>
+                </ul>
+              </div>
+              <div className="modal__container-block-left-bottom">
+                <div className="modal__container-block-left-headline">Stats</div>
+                <ul className="lists">
+                  <li className="list">Height: {height}</li>
+                  <li className="list">Mass: {mass}</li>
+                </ul>
+              </div>
+            </div>
+            <div className="modal__container-block-right">
+              <div className="block__homeword">
+                <div>Home world:</div>
+                <a className="link" href={homeworld}>
+                  Planet name
+                </a>
+              </div>
+              <div className="block__films">
+                <div>Films:</div>
+                <ul>
+                  {films.map(film => (
+                    <li>
+                      <a className="link" href={film}>
+                        Film
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="block__vehicles">
+                <div>Vehicles:</div>
+                <ul>
+                  {vehicles.map(vehicle => (
+                    <li>
+                      <a className="link" href={vehicle}>
+                        Vehicle
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="block__starships">
+                <div>Starships: </div>
+                <ul>
+                  {starships.map(starship => (
+                    <li>
+                      <a className="link" href={starship}>
+                        Starship
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
