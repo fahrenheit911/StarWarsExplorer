@@ -12,8 +12,9 @@
 .menu__list-item:hover {
   background-color: #e4e4e4;
 }
-.menu__list-item__active {
+.menu__link__active {
   font-weight: bold;
+  text-decoration: none;
 }
 .menu__link {
   text-decoration: none;
