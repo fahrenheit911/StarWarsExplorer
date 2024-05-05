@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import './modalwindow.css';
 
@@ -16,9 +16,27 @@ export const ModalWindow = ({
   vehicles,
   starships,
 }) => {
+  const [homeworldName, setHomeworldName] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(homeworld);
+        const data = await response.json();
+        if (data && data.name) {
+          setHomeworldName(data.name);
+        }
+      } catch (error) {
+        console.error('Error fetching homeworld data:', error);
+      }
+    };
+    fetchData();
+  });
+
   const onWrapperClick = e => {
     if (e.target.classList.contains('modal__wrapper')) onClose();
   };
+
   return (
     <div className="modal">
       <div className="modal__wrapper" onClick={onWrapperClick}>
@@ -48,16 +66,16 @@ export const ModalWindow = ({
               <div className="block__homeword">
                 <div>Home world:</div>
                 <a className="link" href={homeworld}>
-                  Planet name
+                  {homeworldName}
                 </a>
               </div>
               <div className="block__films">
                 <div>Films:</div>
                 <ul>
-                  {films.map(film => (
-                    <li>
+                  {films.map((film, index) => (
+                    <li key={index}>
                       <a className="link" href={film}>
-                        Film
+                        {film}
                       </a>
                     </li>
                   ))}
@@ -66,10 +84,10 @@ export const ModalWindow = ({
               <div className="block__vehicles">
                 <div>Vehicles:</div>
                 <ul>
-                  {vehicles.map(vehicle => (
-                    <li>
+                  {vehicles.map((vehicle, index) => (
+                    <li key={index}>
                       <a className="link" href={vehicle}>
-                        Vehicle
+                        {vehicle}
                       </a>
                     </li>
                   ))}
@@ -78,10 +96,10 @@ export const ModalWindow = ({
               <div className="block__starships">
                 <div>Starships: </div>
                 <ul>
-                  {starships.map(starship => (
-                    <li>
+                  {starships.map((starship, index) => (
+                    <li key={index}>
                       <a className="link" href={starship}>
-                        Starship
+                        {starship}
                       </a>
                     </li>
                   ))}
