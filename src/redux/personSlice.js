@@ -3,7 +3,12 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
   isLoading: false,
   error: null,
-  data: [],
+  data: {
+    name: '',
+    films: [],
+    vehicles: [],
+    starships: [],
+  },
 };
 
 const personSlice = createSlice({
@@ -15,7 +20,12 @@ const personSlice = createSlice({
       state.error = action.payload.error;
     },
     updateDataPerson: (state, action) => {
-      state.data = action.payload;
+      state.data = {
+        name: action.payload.name,
+        films: action.payload.films,
+        vehicles: action.payload.vehicles,
+        starships: action.payload.starships,
+      };
     },
   },
 });

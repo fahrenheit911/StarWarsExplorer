@@ -43,7 +43,6 @@ export const getPersonData = personUrlId => async dispatch => {
       const data = await response.json();
       dispatch(updateLoadStatePerson({isLoading: true, error: null}));
       dispatch(updateDataPerson(data));
-      console.log(data);
     } else {
       dispatch(updateLoadStatePerson({isLoading: false, error: 'HTTP error ' + response.status}));
     }
