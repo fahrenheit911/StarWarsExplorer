@@ -15,7 +15,9 @@
 .menu__link__active {
   font-weight: bold;
   text-decoration: none;
+  color: #1f95d1;
 }
 .menu__link {
   text-decoration: none;
+  color: #1f95d1;
 }
