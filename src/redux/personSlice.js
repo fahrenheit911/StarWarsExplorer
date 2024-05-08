@@ -5,6 +5,13 @@ const initialState = {
   error: null,
   data: {
     name: '',
+    hair_color: '',
+    skin_color: '',
+    eye_color: '',
+    gender: '',
+    height: null,
+    mass: null,
+    homeworld: '',
     films: [],
     vehicles: [],
     starships: [],
@@ -22,6 +29,13 @@ const personSlice = createSlice({
     updateDataPerson: (state, action) => {
       state.data = {
         name: action.payload.name,
+        hair_color: action.payload.hair_color,
+        skin_color: action.payload.skin_color,
+        eye_color: action.payload.eye_color,
+        gender: action.payload.gender,
+        height: action.payload.height,
+        mass: action.payload.mass,
+        homeworld: action.payload.homeworld,
         films: action.payload.films,
         vehicles: action.payload.vehicles,
         starships: action.payload.starships,

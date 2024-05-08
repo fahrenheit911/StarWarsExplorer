@@ -1,48 +1,69 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
+import {NavLink} from 'react-router-dom';
 import Loader from '../Loader';
 
 import './modalwindow.css';
 
 export const ModalWindow = ({onClose}) => {
-  const [homeworldName, setHomeworldName] = useState('');
+  const [homeworldData, setHomeworldData] = useState([]);
+  const [filmsData, setFilmsData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const person = useSelector(state => state?.person?.data);
-  const loading = useSelector(state => state?.person?.isLoading);
 
   useEffect(() => {
     const fetchHomeworldName = async () => {
       try {
         const response = await fetch(person.homeworld);
-        const data = await response.json();
-        if (data && data.name) {
-          setHomeworldName(data.name);
+        if (response.ok) {
+          const data = await response.json();
+          setHomeworldData(data);
+        } else {
+          throw new Error('Failed to fetch homeworld data');
         }
       } catch (error) {
         console.error('Error fetching homeworld data:', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchHomeworldName();
-  }, [person.homeworld]);
+  }, []);
+
+  useEffect(() => {
+    const fetchFilmsData = async () => {
+      const films = [];
+      for (const url of person.films) {
+        try {
+          const response = await fetch(url);
+          if (response.ok) {
+            const filmData = await response.json();
+            films.push(filmData);
+          } else {
+            throw new Error('Failed to fetch homeworld data');
+          }
+        } catch (error) {
+          console.error('Error fetching vehicle data:', error);
+        }
+      }
+      setFilmsData(films);
+    };
+    fetchFilmsData();
+  }, []);
 
   const onWrapperClick = e => {
     if (e.target.classList.contains('modal__wrapper')) onClose();
   };
 
   return (
-    <>
-      {loading ? (
-        <div className="modal">
-          <div className="modal__wrapper">
-            <div className="modal__content">
-              <Loader />
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="modal">
-          <div className="modal__wrapper" onClick={onWrapperClick}>
-            <div className="modal__content">
+    <div className="modal">
+      <div className="modal__wrapper" onClick={onWrapperClick}>
+        <div className="modal__content">
+          {loading ? (
+            <Loader />
+          ) : (
+            <>
               <h1 className="modal__content-title">{person.name}</h1>
               <hr></hr>
               <div className="modal__container">
@@ -67,18 +88,18 @@ export const ModalWindow = ({onClose}) => {
                 <div className="modal__container-block-right">
                   <div className="block__homeword">
                     <div>Home world:</div>
-                    <a className="link" href={person.homeworld}>
-                      {homeworldName}
-                    </a>
+                    <NavLink className="link" to={homeworldData.url}>
+                      {homeworldData.name}
+                    </NavLink>
                   </div>
                   <div className="block__films">
                     <div>Films:</div>
                     <ul>
-                      {person.films.map((film, index) => (
+                      {filmsData.map((film, index) => (
                         <li key={index}>
-                          <a className="link" href={'ggg'}>
-                            {film}
-                          </a>
+                          <NavLink className="link" to={film.url}>
+                            {film.title}
+                          </NavLink>
                         </li>
                       ))}
                     </ul>
@@ -88,9 +109,9 @@ export const ModalWindow = ({onClose}) => {
                     <ul>
                       {person.vehicles.map((vehicle, index) => (
                         <li key={index}>
-                          <a className="link" href={vehicle}>
+                          <NavLink className="link" to={vehicle}>
                             {vehicle}
-                          </a>
+                          </NavLink>
                         </li>
                       ))}
                     </ul>
@@ -100,19 +121,19 @@ export const ModalWindow = ({onClose}) => {
                     <ul>
                       {person.starships.map((starship, index) => (
                         <li key={index}>
-                          <a className="link" href={starship}>
+                          <NavLink className="link" to={starship}>
                             {starship}
-                          </a>
+                          </NavLink>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </>
+          )}
         </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 };
