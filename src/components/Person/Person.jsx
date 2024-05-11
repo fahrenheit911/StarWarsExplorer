@@ -14,11 +14,11 @@ export const Person = ({name, birth_year, gender, url}) => {
   };
   const initials = getInitials(name);
 
-  const num = url.match(/\/(\d+)/)[1];
+  const personId = url.match(/\/(\d+)/)[1];
 
   return (
     <section className="person">
-      <NavLink className="person__link" to={'/people/' + num}>
+      <NavLink className="person__link" to={'/people/' + personId}>
         <div className="person__card">
           <div className="person__circle">
             <div className="person__initials">{initials}</div>

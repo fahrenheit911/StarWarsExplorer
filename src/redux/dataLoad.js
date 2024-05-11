@@ -3,7 +3,7 @@ import {updateLoadStatePerson, updateDataPerson} from './personSlice.js';
 
 export const loadData = () => async dispatch => {
   try {
-    dispatch(updateLoadStatePeople({state: true, error: null}));
+    dispatch(updateLoadStatePeople({isLoading: true, error: null}));
     const response = await fetch('https://swapi.py4e.com/api/people');
     if (response.ok) {
       const data = await response.json();
@@ -19,7 +19,7 @@ export const loadData = () => async dispatch => {
 
 export const nextLoadData = nextUrl => async dispatch => {
   try {
-    dispatch(updateLoadStatePeople({state: true, error: null}));
+    dispatch(updateLoadStatePeople({isLoading: true, error: null}));
     const response = await fetch(nextUrl);
 
     if (response.ok) {
@@ -36,12 +36,18 @@ export const nextLoadData = nextUrl => async dispatch => {
 
 export const getPersonData = personUrlId => async dispatch => {
   try {
-    dispatch(updateLoadStatePerson({state: true, error: null}));
+    dispatch(updateLoadStatePerson({isLoading: true, error: null}));
     const response = await fetch(`https://swapi.py4e.com/api/people/${personUrlId}`);
 
     if (response.ok) {
       const data = await response.json();
       dispatch(updateLoadStatePerson({isLoading: true, error: null}));
+
+      data.homeworld = await fetchJsonData(data.homeworld);
+      data.films = await Promise.all(data.films.map(film => fetchJsonData(film)));
+      data.vehicles = await Promise.all(data.vehicles.map(vehicle => fetchJsonData(vehicle)));
+      data.starships = await Promise.all(data.starships.map(starship => fetchJsonData(starship)));
+
       dispatch(updateDataPerson(data));
     } else {
       dispatch(updateLoadStatePerson({isLoading: false, error: 'HTTP error ' + response.status}));
@@ -49,4 +55,9 @@ export const getPersonData = personUrlId => async dispatch => {
   } catch (err) {
     dispatch(updateLoadStatePerson({isLoading: false, error: err.message}));
   }
+};
+
+const fetchJsonData = async url => {
+  const response = await fetch(url);
+  return response.json();
 };

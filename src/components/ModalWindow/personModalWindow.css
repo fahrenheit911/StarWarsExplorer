@@ -21,7 +21,7 @@
 .modal__content {
   position: relative;
   width: 100%;
-  max-width: 700px;
+  width: 700px;
   height: 400px;
   margin: 20px;
   padding: 5px;
@@ -29,6 +29,7 @@
   border-radius: 5px;
   background-color: #ffffff;
   transform: translateY(-100px);
+  overflow: auto;
 }
 .modal__content-title {
   text-align: center;
@@ -38,12 +39,12 @@
 .modal__container {
   display: flex;
   margin-top: 20px;
+  gap: 20px;
 }
 .modal__container-block-left {
   display: flex;
   flex-direction: column;
-  margin-right: 60px;
-  margin-left: 25px;
+  flex-grow: 1;
 }
 .modal__container-block-left-top {
   border-bottom: solid 1px;
@@ -56,31 +57,36 @@
 .modal__container-block-right {
   display: flex;
   flex-direction: column;
+  flex-grow: 10;
 }
 .block__homeword {
   display: flex;
-  justify-content: center;
   border-bottom: solid 1px;
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
 .block__films {
   display: flex;
-  justify-content: center;
   border-bottom: solid 1px;
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
 .block__vehicles {
   display: flex;
-  justify-content: center;
   border-bottom: solid 1px;
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
 .block__starships {
   display: flex;
-  justify-content: center;
+}
+.block__category {
+  flex: 1 0 100px;
+  text-align: right;
+}
+.block__category-list {
+  flex-grow: 3;
+  flex-basis: 300px;
 }
 .list {
   padding-bottom: 15px;

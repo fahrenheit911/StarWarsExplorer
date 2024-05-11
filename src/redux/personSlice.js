@@ -23,10 +23,11 @@ const personSlice = createSlice({
   initialState,
   reducers: {
     updateLoadStatePerson: (state, action) => {
-      state.isLoading = action.payload.state;
+      state.isLoading = action.payload.isLoading;
       state.error = action.payload.error;
     },
     updateDataPerson: (state, action) => {
+      state.isLoading = false;
       state.data = {
         name: action.payload.name,
         hair_color: action.payload.hair_color,

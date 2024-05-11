@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {useParams, useNavigate} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import Person from '../components/Person';
 import Button from '../components/Button';
 import ModalWindow from '../components/ModalWindow';
@@ -17,18 +17,16 @@ export const People = () => {
 
   const params = useParams();
 
-  const navigate = useNavigate();
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setPersonUrlId(params.id);
+    if (personUrlId) dispatch(getPersonData(personUrlId));
+  }, [dispatch, params.id, personUrlId]);
 
   useEffect(() => {
     dispatch(loadData());
   }, [dispatch]);
-
-  useEffect(() => {
-    setPersonUrlId(params.urlid);
-    if (personUrlId) dispatch(getPersonData(personUrlId));
-  }, [dispatch, params.urlid, personUrlId, setPersonUrlId]);
 
   const loadMore = () => {
     dispatch(nextLoadData(nextUrl));
@@ -48,7 +46,7 @@ export const People = () => {
           disabled={loading}
         />
       )}
-      {personUrlId && <ModalWindow onClose={() => navigate('/')} urlId={personUrlId} />}
+      {personUrlId && <ModalWindow personUrlId={personUrlId} />}
     </article>
   );
 };
