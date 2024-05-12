@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom';
 import Person from '../components/Person';
 import Button from '../components/Button';
 import ModalWindow from '../components/ModalWindow';
-import {loadData, nextLoadData, getPersonData} from '../redux/dataLoad';
+import {loadData, nextLoadData, getPersonData} from '../Utils/dataLoad';
 
 import './page.css';
 

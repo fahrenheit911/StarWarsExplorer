@@ -1,5 +1,9 @@
-import {updateLoadStatePeople, updateDataPeople, updateNewDataPeople} from './peopleSlice.js';
-import {updateLoadStatePerson, updateDataPerson} from './personSlice.js';
+import {
+  updateLoadStatePeople,
+  updateDataPeople,
+  updateNewDataPeople,
+} from '../redux/peopleSlice.js';
+import {updateLoadStatePerson, updateDataPerson} from '../redux/personSlice.js';
 
 export const loadData = () => async dispatch => {
   try {
