@@ -11,13 +11,12 @@ import './page.css';
 export const People = () => {
   const [personUrlId, setPersonUrlId] = useState(null);
 
+  const params = useParams();
+  const dispatch = useDispatch();
+
   const people = useSelector(state => state?.people?.data?.results);
   const loading = useSelector(state => state?.people?.isLoading);
   const nextUrl = useSelector(state => state?.people?.data?.next);
-
-  const params = useParams();
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setPersonUrlId(params.id);
