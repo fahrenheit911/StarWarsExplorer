@@ -44,7 +44,7 @@ export const Planets = () => {
         ))}
       </section>
       <Button title={loading ? 'Loading...' : 'Load more'} disabled={loading} />
-      {planetUrlId && <ModalWindow />}
+      {planetUrlId && <ModalWindow planetUrlId={planetUrlId} />}
     </article>
   );
 };

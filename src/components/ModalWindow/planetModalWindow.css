@@ -1,0 +1,97 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000066;
+  overflow: hidden;
+  z-index: 999;
+}
+.modal__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: 100%;
+  min-height: 100%;
+}
+.modal__content {
+  position: relative;
+  width: 100%;
+  width: 700px;
+  height: 400px;
+  margin: 20px;
+  padding: 5px;
+  border: solid #c4c2c2 2px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  transform: translateY(-100px);
+  overflow: auto;
+}
+.modal__content-title {
+  text-align: center;
+  font-size: larger;
+  padding: 5px;
+}
+.modal__container {
+  display: flex;
+  margin-top: 20px;
+  gap: 20px;
+}
+.modal__container-block-left {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.modal__container-block-left-top {
+  border-bottom: solid 1px;
+  margin-bottom: 25px;
+}
+.modal__container-block-left-headline {
+  font-size: large;
+  padding-bottom: 20px;
+}
+.modal__container-block-right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 10;
+}
+.block__homeword {
+  display: flex;
+  border-bottom: solid 1px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.block__films {
+  display: flex;
+  border-bottom: solid 1px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.block__vehicles {
+  display: flex;
+  border-bottom: solid 1px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.block__starships {
+  display: flex;
+}
+.block__category {
+  flex: 1 0 100px;
+  text-align: right;
+}
+.block__category-list {
+  flex-grow: 3;
+  flex-basis: 300px;
+}
+.list {
+  padding-bottom: 15px;
+}
+.link {
+  margin-left: 10px;
+  color: #1f95d1;
+}
