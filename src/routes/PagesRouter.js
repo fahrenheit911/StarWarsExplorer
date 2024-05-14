@@ -9,9 +9,11 @@ export const PagesRouter = () => {
     <Routes>
       <Route path="/" element={<Navigate replace to="/people" />} />
       <Route path="/people" element={<People />}>
-        <Route path=":id" element={<People />} />
+        <Route path=":perid" element={<People />} />
       </Route>
-      <Route path="/planets" element={<Planets />} />
+      <Route path="/planets" element={<Planets />}>
+        <Route path=":plid" element={<Planets />} />
+      </Route>
       <Route path="/starships" element={<Starships />} />
     </Routes>
   );

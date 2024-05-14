@@ -1,23 +1,19 @@
-import {
-  updateLoadStatePeople,
-  updateDataPeople,
-  updateNewDataPeople,
-} from '../redux/peopleSlice.js';
+import {updateLoadStatePeople, updateNewDataPeople} from '../redux/peopleSlice.js';
 import {updateLoadStatePerson, updateDataPerson} from '../redux/personSlice.js';
 
-export const loadData = () => async dispatch => {
+export const loadData = (url, updateLoadStateAction, updateDataAction) => async dispatch => {
   try {
-    dispatch(updateLoadStatePeople({isLoading: true, error: null}));
-    const response = await fetch('https://swapi.py4e.com/api/people');
+    dispatch(updateLoadStateAction({isLoading: true, error: null}));
+    const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
-      dispatch(updateLoadStatePeople({isLoading: true, error: null}));
-      dispatch(updateDataPeople(data));
+      dispatch(updateLoadStateAction({isLoading: true, error: null}));
+      dispatch(updateDataAction(data));
     } else {
-      dispatch(updateLoadStatePeople({isLoading: false, error: 'HTTP error ' + response.status}));
+      dispatch(updateLoadStateAction({isLoading: false, error: 'HTTP error ' + response.status}));
     }
   } catch (err) {
-    dispatch(updateLoadStatePeople({isLoading: false, error: err.message}));
+    dispatch(updateLoadStateAction({isLoading: false, error: err.message}));
   }
 };
 
@@ -38,6 +34,11 @@ export const nextLoadData = nextUrl => async dispatch => {
   }
 };
 
+const fetchJsonData = async url => {
+  const response = await fetch(url);
+  return response.json();
+};
+
 export const getPersonData = personUrlId => async dispatch => {
   try {
     dispatch(updateLoadStatePerson({isLoading: true, error: null}));
@@ -45,7 +46,6 @@ export const getPersonData = personUrlId => async dispatch => {
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(updateLoadStatePerson({isLoading: true, error: null}));
 
       data.homeworld = await fetchJsonData(data.homeworld);
       data.films = await Promise.all(data.films.map(film => fetchJsonData(film)));
@@ -59,9 +59,4 @@ export const getPersonData = personUrlId => async dispatch => {
   } catch (err) {
     dispatch(updateLoadStatePerson({isLoading: false, error: err.message}));
   }
-};
-
-const fetchJsonData = async url => {
-  const response = await fetch(url);
-  return response.json();
 };
