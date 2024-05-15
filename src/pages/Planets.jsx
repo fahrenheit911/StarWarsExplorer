@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom';
 import Planet from '../components/Planet';
 import Button from '../components/Button';
 import ModalWindow from '../components/ModalWindow';
-import {loadData, nextLoadData, getPersonData} from '../Utils/dataLoad';
+import {loadData, nextLoadData, getPlanetData} from '../Utils/dataLoad';
 import {
   updateLoadStatePlanets,
   updateDataPlanets,
@@ -16,8 +16,6 @@ import './page.css';
 export const Planets = () => {
   const [planetUrlId, setPlanetUrlId] = useState(null);
 
-  console.log(planetUrlId);
-
   const params = useParams();
   const dispatch = useDispatch();
 
@@ -27,7 +25,7 @@ export const Planets = () => {
 
   useEffect(() => {
     setPlanetUrlId(params.plid);
-    if (planetUrlId) dispatch(getPersonData(planetUrlId));
+    if (planetUrlId) dispatch(getPlanetData(planetUrlId));
   }, [dispatch, params.plid, planetUrlId]);
 
   useEffect(() => {

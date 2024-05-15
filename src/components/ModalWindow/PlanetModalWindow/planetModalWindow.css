@@ -46,10 +46,6 @@
   flex-direction: column;
   flex-grow: 1;
 }
-.modal__container-block-left-top {
-  border-bottom: solid 1px;
-  margin-bottom: 25px;
-}
 .modal__container-block-left-headline {
   font-size: large;
   padding-bottom: 20px;
@@ -59,26 +55,17 @@
   flex-direction: column;
   flex-grow: 10;
 }
-.block__homeword {
+.block__residents {
   display: flex;
-  border-bottom: solid 1px;
   padding-bottom: 15px;
   margin-bottom: 15px;
+  border-bottom: solid 1px;
 }
 .block__films {
   display: flex;
-  border-bottom: solid 1px;
   padding-bottom: 15px;
   margin-bottom: 15px;
-}
-.block__vehicles {
-  display: flex;
-  border-bottom: solid 1px;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
-.block__starships {
-  display: flex;
+  border: none;
 }
 .block__category {
   flex: 1 0 100px;

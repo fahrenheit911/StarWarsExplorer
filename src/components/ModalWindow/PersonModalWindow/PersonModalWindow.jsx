@@ -1,8 +1,8 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {NavLink} from 'react-router-dom';
-import Loader from '../Loader';
-import './personModalWindow.css';
+import Loader from '../../Loader';
+import '../PersonModalWindow/personModalWindow.css';
 
 export const PersonModalWindow = ({onClose}) => {
   const person = useSelector(state => state?.person?.data);

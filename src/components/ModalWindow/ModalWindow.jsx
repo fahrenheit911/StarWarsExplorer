@@ -1,7 +1,7 @@
 import React from 'react';
-import {PersonModalWindow} from './PersonModalWindow';
-import {PlanetModalWindow} from './PlanetModalWindow';
 import {useNavigate} from 'react-router-dom';
+import PersonModalWindow from '../ModalWindow/PersonModalWindow';
+import PlanetModalWindow from '../ModalWindow/PlanetModalWindow';
 
 export const ModalWindow = ({personUrlId, planetUrlId}) => {
   const navigate = useNavigate();

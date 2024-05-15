@@ -1,8 +1,8 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {NavLink} from 'react-router-dom';
-import Loader from '../Loader';
-import './planetModalWindow.css';
+import Loader from '../../Loader';
+import '../PlanetModalWindow/planetModalWindow.css';
 
 export const PlanetModalWindow = ({onClose}) => {
   const planet = useSelector(state => state?.planet?.data);
@@ -24,18 +24,20 @@ export const PlanetModalWindow = ({onClose}) => {
               <hr></hr>
               <div className="modal__container">
                 <div className="modal__container-block-left">
-                  <div className="modal__container-block-left-top">
-                    <div className="modal__container-block-left-headline">Apperance</div>
-                    <ul className="lists">
-                      <li className="list">Hair color: {planet?.hair_color}</li>
-                      <li className="list">Skin color: {planet?.skin_color}</li>
-                      <li className="list">Eye color: {planet?.eye_color}</li>
-                      <li className="list">Gender: {planet?.gender}</li>
-                    </ul>
-                  </div>
+                  <div className="modal__container-block-left-headline">Stats</div>
+                  <ul className="lists">
+                    <li className="list">Rotation period: {planet?.rotation_period}</li>
+                    <li className="list">Orbital period: {planet?.orbital_period}</li>
+                    <li className="list">Diameter: {planet?.diameter}</li>
+                    <li className="list">Climate: {planet?.climate}</li>
+                    <li className="list">Gravity: {planet?.gravity}</li>
+                    <li className="list">Terrain: {planet?.terrain}</li>
+                    <li className="list">Surface water: {planet?.surface_water}</li>
+                    <li className="list">Population: {planet?.population}</li>
+                  </ul>
                 </div>
                 <div className="modal__container-block-right">
-                  <div className="block__films">
+                  <div className="block__residents">
                     <div className="block__category">Residents:</div>
                     <div className="block__category-list">
                       <ul>
