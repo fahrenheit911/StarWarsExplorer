@@ -1,7 +1,9 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {NavLink} from 'react-router-dom';
+import {getInternalLink} from '../../../Utils/getInternalLink';
 import Loader from '../../Loader';
+
 import '../PersonModalWindow/personModalWindow.css';
 
 export const PersonModalWindow = ({onClose}) => {
@@ -45,7 +47,7 @@ export const PersonModalWindow = ({onClose}) => {
                   <div className="block__homeword">
                     <div className="block__category">Home world:</div>
                     <div className="block__category-list">
-                      <NavLink className="link" to={person?.homeworld?.url}>
+                      <NavLink className="link" to={getInternalLink(person?.homeworld?.url)}>
                         {person?.homeworld?.name}
                       </NavLink>
                     </div>
@@ -56,7 +58,7 @@ export const PersonModalWindow = ({onClose}) => {
                       <ul>
                         {person?.films?.map((film, index) => (
                           <li key={index}>
-                            <NavLink className="link" to={film.url}>
+                            <NavLink className="link" to={getInternalLink(film.url)}>
                               {film.title}
                             </NavLink>
                           </li>
@@ -70,7 +72,7 @@ export const PersonModalWindow = ({onClose}) => {
                       <ul>
                         {person?.vehicles?.map((vehicle, index) => (
                           <li key={index}>
-                            <NavLink className="link" to={vehicle.url}>
+                            <NavLink className="link" to={getInternalLink(vehicle.url)}>
                               {vehicle.name}
                             </NavLink>
                           </li>
@@ -84,7 +86,7 @@ export const PersonModalWindow = ({onClose}) => {
                       <ul>
                         {person?.starships?.map((starship, index) => (
                           <li key={index}>
-                            <NavLink className="link" to={starship.url}>
+                            <NavLink className="link" to={getInternalLink(starship.url)}>
                               {starship.name}
                             </NavLink>
                           </li>

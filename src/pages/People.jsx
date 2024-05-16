@@ -31,7 +31,7 @@ export const People = () => {
   }, [dispatch]);
 
   const loadMore = () => {
-    dispatch(nextLoadData(nextUrl));
+    dispatch(nextLoadData(nextUrl, updateLoadStatePeople, updateNewDataPeople));
   };
 
   return (
@@ -44,8 +44,8 @@ export const People = () => {
       {nextUrl && (
         <Button
           title={loading ? 'Loading...' : 'Load more'}
-          onClick={loadMore}
           disabled={loading}
+          onClick={loadMore}
         />
       )}
       {personUrlId && <ModalWindow personUrlId={personUrlId} />}

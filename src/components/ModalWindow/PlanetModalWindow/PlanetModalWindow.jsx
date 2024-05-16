@@ -1,7 +1,9 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {NavLink} from 'react-router-dom';
+import {getInternalLink} from '../../../Utils/getInternalLink';
 import Loader from '../../Loader';
+
 import '../PlanetModalWindow/planetModalWindow.css';
 
 export const PlanetModalWindow = ({onClose}) => {
@@ -43,7 +45,7 @@ export const PlanetModalWindow = ({onClose}) => {
                       <ul>
                         {planet?.residents?.map((resident, index) => (
                           <li key={index}>
-                            <NavLink className="link" to={resident.url}>
+                            <NavLink className="link" to={getInternalLink(resident.url)}>
                               {resident.name}
                             </NavLink>
                           </li>
@@ -57,7 +59,7 @@ export const PlanetModalWindow = ({onClose}) => {
                       <ul>
                         {planet?.films?.map((film, index) => (
                           <li key={index}>
-                            <NavLink className="link" to={film.url}>
+                            <NavLink className="link" to={getInternalLink(film.url)}>
                               {film.title}
                             </NavLink>
                           </li>

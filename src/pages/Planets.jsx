@@ -34,6 +34,10 @@ export const Planets = () => {
     );
   }, [dispatch]);
 
+  const loadMore = () => {
+    dispatch(nextLoadData(nextUrl, updateLoadStatePlanets, updateNewDataPlanets));
+  };
+
   return (
     <article>
       <section className="container">
@@ -41,7 +45,13 @@ export const Planets = () => {
           <Planet key={index} index={index} {...planet} />
         ))}
       </section>
-      <Button title={loading ? 'Loading...' : 'Load more'} disabled={loading} />
+      {nextUrl && (
+        <Button
+          title={loading ? 'Loading...' : 'Load more'}
+          disabled={loading}
+          onClick={loadMore}
+        />
+      )}
       {planetUrlId && <ModalWindow planetUrlId={planetUrlId} />}
     </article>
   );

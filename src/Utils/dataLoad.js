@@ -1,4 +1,3 @@
-import {updateLoadStatePeople, updateNewDataPeople} from '../redux/peopleSlice.js';
 import {updateLoadStatePerson, updateDataPerson} from '../redux/personSlice.js';
 import {updateLoadStatePlanet, updateDataPlanet} from '../redux/planetSlice.js';
 
@@ -18,20 +17,24 @@ export const loadData = (url, updateLoadStateAction, updateDataAction) => async 
   }
 };
 
-export const nextLoadData = nextUrl => async dispatch => {
+export const nextLoadData = (
+  nextUrl,
+  updateLoadStateAction,
+  updateNewDataAction
+) => async dispatch => {
   try {
-    dispatch(updateLoadStatePeople({isLoading: true, error: null}));
+    dispatch(updateLoadStateAction({isLoading: true, error: null}));
     const response = await fetch(nextUrl);
 
     if (response.ok) {
       const newData = await response.json();
-      dispatch(updateLoadStatePeople({isLoading: true, error: null}));
-      dispatch(updateNewDataPeople(newData));
+      dispatch(updateLoadStateAction({isLoading: true, error: null}));
+      dispatch(updateNewDataAction(newData));
     } else {
-      dispatch(updateLoadStatePeople({isLoading: false, error: 'HTTP error ' + response.status}));
+      dispatch(updateLoadStateAction({isLoading: false, error: 'HTTP error ' + response.status}));
     }
   } catch (err) {
-    dispatch(updateLoadStatePeople({isLoading: false, error: err.message}));
+    dispatch(updateLoadStateAction({isLoading: false, error: err.message}));
   }
 };
 

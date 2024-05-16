@@ -8,9 +8,9 @@ export const ModalWindow = ({personUrlId, planetUrlId}) => {
   return (
     <div>
       <div>
-        {personUrlId && !planetUrlId && <PersonModalWindow onClose={() => navigate('/people')} />}
+        {personUrlId && <PersonModalWindow onClose={() => navigate('/people')} />}
 
-        {planetUrlId && !personUrlId && <PlanetModalWindow onClose={() => navigate('/planets')} />}
+        {planetUrlId && <PlanetModalWindow onClose={() => navigate('/planets')} />}
       </div>
     </div>
   );
