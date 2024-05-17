@@ -1,5 +1,6 @@
 import {updateLoadStatePerson, updateDataPerson} from '../redux/personSlice.js';
 import {updateLoadStatePlanet, updateDataPlanet} from '../redux/planetSlice.js';
+import {updateLoadStateStarship, updateDataStarship} from '../redux/starshipSlice.js';
 
 export const loadData = (url, updateLoadStateAction, updateDataAction) => async dispatch => {
   try {
@@ -82,5 +83,25 @@ export const getPlanetData = planetUrlId => async dispatch => {
     }
   } catch (err) {
     dispatch(updateLoadStatePlanet({isLoading: false, error: err.message}));
+  }
+};
+
+export const getStarshipData = starshipUrlId => async dispatch => {
+  try {
+    dispatch(updateLoadStateStarship({isLoading: true, error: null}));
+    const response = await fetch(`https://swapi.py4e.com/api/starships/${starshipUrlId}`);
+
+    if (response.ok) {
+      const data = await response.json();
+
+      data.pilots = await Promise.all(data.pilots.map(pilot => fetchJsonData(pilot)));
+      data.films = await Promise.all(data.films.map(film => fetchJsonData(film)));
+
+      dispatch(updateDataStarship(data));
+    } else {
+      dispatch(updateLoadStateStarship({isLoading: false, error: 'HTTP error ' + response.status}));
+    }
+  } catch (err) {
+    dispatch(updateLoadStateStarship({isLoading: false, error: err.message}));
   }
 };

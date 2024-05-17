@@ -14,7 +14,9 @@ export const PagesRouter = () => {
       <Route path="/planets" element={<Planets />}>
         <Route path=":plid" element={<Planets />} />
       </Route>
-      <Route path="/starships" element={<Starships />} />
+      <Route path="/starships" element={<Starships />}>
+        <Route path=":stid" element={<Starships />} />
+      </Route>
     </Routes>
   );
 };
