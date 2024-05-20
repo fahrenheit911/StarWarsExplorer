@@ -1,17 +1,27 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {useParams} from 'react-router-dom';
 import Person from '../components/Person';
 import Button from '../components/Button';
-import {loadData, nextLoadData} from '../redux/dataLoad';
+import ModalWindow from '../components/ModalWindow';
+import {loadData, nextLoadData, getPersonData} from '../Utils/dataLoad';
 
 import './page.css';
 
 export const People = () => {
+  const [personUrlId, setPersonUrlId] = useState(null);
+
+  const params = useParams();
+  const dispatch = useDispatch();
+
   const people = useSelector(state => state?.people?.data?.results);
   const loading = useSelector(state => state?.people?.isLoading);
   const nextUrl = useSelector(state => state?.people?.data?.next);
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    setPersonUrlId(params.id);
+    if (personUrlId) dispatch(getPersonData(personUrlId));
+  }, [dispatch, params.id, personUrlId]);
 
   useEffect(() => {
     dispatch(loadData());
@@ -24,8 +34,8 @@ export const People = () => {
   return (
     <article>
       <section className="container">
-        {people.map(person => (
-          <Person key={person.name} {...person} />
+        {people.map((person, index) => (
+          <Person key={index} index={index} {...person} />
         ))}
       </section>
       {nextUrl && (
@@ -35,6 +45,7 @@ export const People = () => {
           disabled={loading}
         />
       )}
+      {personUrlId && <ModalWindow personUrlId={personUrlId} />}
     </article>
   );
 };

@@ -1,17 +1,28 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
+import {getInitials} from '../../Utils/getInitials';
+
 import './person.css';
 
-export const Person = ({name, birth_year, gender}) => {
+export const Person = ({name, birth_year, gender, url}) => {
+  const initials = getInitials(name);
+
+  const personId = url.match(/\/(\d+)/)[1];
+
   return (
     <section className="person">
-      <div className="person__card">
-        <div className="person__circle"></div>
-        <div className="person__data">
-          <div>Name: {name}</div>
-          <div>Birth year: {birth_year}</div>
-          <div>Gender: {gender}</div>
+      <NavLink className="person__link" to={'/people/' + personId}>
+        <div className="person__card">
+          <div className="person__circle">
+            <div className="person__initials">{initials}</div>
+          </div>
+          <div className="person__data">
+            <div>Name: {name}</div>
+            <div>Birth year: {birth_year}</div>
+            <div>Gender: {gender}</div>
+          </div>
         </div>
-      </div>
+      </NavLink>
     </section>
   );
 };

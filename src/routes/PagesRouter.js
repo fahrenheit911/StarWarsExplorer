@@ -8,7 +8,9 @@ export const PagesRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Navigate replace to="/people" />} />
-      <Route path="/people" element={<People />} />
+      <Route path="/people" element={<People />}>
+        <Route path=":id" element={<People />} />
+      </Route>
       <Route path="/planets" element={<Planets />} />
       <Route path="/starships" element={<Starships />} />
     </Routes>

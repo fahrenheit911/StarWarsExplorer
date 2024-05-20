@@ -15,14 +15,16 @@ const peopleSlice = createSlice({
   name: 'people',
   initialState,
   reducers: {
-    updateLoadState: (state, action) => {
-      state.isLoading = action.payload.state;
+    updateLoadStatePeople: (state, action) => {
+      state.isLoading = action.payload.isLoading;
       state.error = action.payload.error;
     },
-    updateData: (state, action) => {
+    updateDataPeople: (state, action) => {
       state.data = action.payload;
+      state.isLoading = false;
     },
-    updateNewData: (state, action) => {
+    updateNewDataPeople: (state, action) => {
+      state.isLoading = false;
       state.data = {
         count: action.payload.count,
         next: action.payload.next,
@@ -33,6 +35,6 @@ const peopleSlice = createSlice({
   },
 });
 
-export const {updateLoadState, updateData, updateNewData} = peopleSlice.actions;
+export const {updateLoadStatePeople, updateDataPeople, updateNewDataPeople} = peopleSlice.actions;
 
 export default peopleSlice.reducer;
