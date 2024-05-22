@@ -1,11 +1,11 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import {getInitials} from '../../Utils/getInitials';
+import {createInitials} from '../../Utils/createInitials';
 
 import '../Person/person.css';
 
 export const Starship = ({name, cost_in_credits: cost, passengers, url}) => {
-  const initials = getInitials(name);
+  const initials = createInitials(name);
 
   const starshipId = url.match(/\/(\d+)/)[1];
   return (

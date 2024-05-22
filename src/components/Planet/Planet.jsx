@@ -1,11 +1,11 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import {getInitials} from '../../Utils/getInitials';
+import {createInitials} from '../../Utils/createInitials';
 
 import '../Person/person.css';
 
 export const Planet = ({name, population, url}) => {
-  const initials = getInitials(name);
+  const initials = createInitials(name);
 
   const planetId = url.match(/\/(\d+)/)[1];
   return (

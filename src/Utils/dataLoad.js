@@ -26,7 +26,6 @@ export const nextLoadData = (
   try {
     dispatch(updateLoadStateAction({isLoading: true, error: null}));
     const response = await fetch(nextUrl);
-
     if (response.ok) {
       const newData = await response.json();
       dispatch(updateLoadStateAction({isLoading: true, error: null}));
@@ -41,6 +40,9 @@ export const nextLoadData = (
 
 const fetchJsonData = async url => {
   const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('Failed to fetch data');
+  }
   return response.json();
 };
 

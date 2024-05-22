@@ -1,4 +1,4 @@
-export const getInternalLink = url => {
+export const createAppUrl = url => {
   if (!url) return url;
   const link =
     '/' +

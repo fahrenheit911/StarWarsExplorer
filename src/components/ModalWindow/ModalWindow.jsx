@@ -1,17 +1,16 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
-import PersonModalWindow from '../ModalWindow/PersonModalWindow';
-import PlanetModalWindow from '../ModalWindow/PlanetModalWindow';
-import StarshipModalWindow from '../ModalWindow/StarshipModalWindow';
+import {useLocation, useNavigate} from 'react-router-dom';
+import Loader from '../Loader';
 
-export const ModalWindow = ({personUrlId, planetUrlId, starshipUrlId}) => {
+export const ModalWindow = ({loading, children, onWrapperClick}) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const pathname = location.pathname.match(/^\/([^\\/]+)/)[0];
+
   return (
-    <div>
-      <div>
-        {personUrlId && <PersonModalWindow onClose={() => navigate('/people')} />}
-        {planetUrlId && <PlanetModalWindow onClose={() => navigate('/planets')} />}
-        {starshipUrlId && <StarshipModalWindow onClose={() => navigate('/starships')} />}
+    <div className="modal">
+      <div className="modal__wrapper" onClick={e => onWrapperClick(e, () => navigate(pathname))}>
+        <div className="modal__content">{loading ? <Loader /> : children}</div>
       </div>
     </div>
   );

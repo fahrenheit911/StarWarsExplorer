@@ -9,13 +9,13 @@ export const PagesRouter = () => {
     <Routes>
       <Route path="/" element={<Navigate replace to="/people" />} />
       <Route path="/people" element={<People />}>
-        <Route path=":perid" element={<People />} />
+        <Route path=":personId" element={<People />} />
       </Route>
       <Route path="/planets" element={<Planets />}>
-        <Route path=":plid" element={<Planets />} />
+        <Route path=":planetId" element={<Planets />} />
       </Route>
       <Route path="/starships" element={<Starships />}>
-        <Route path=":stid" element={<Starships />} />
+        <Route path=":starshipId" element={<Starships />} />
       </Route>
     </Routes>
   );

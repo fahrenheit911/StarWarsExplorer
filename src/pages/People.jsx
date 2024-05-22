@@ -3,8 +3,10 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import Person from '../components/Person';
 import Button from '../components/Button';
+import PersonWindowContent from '../components/WindowContent/PersonWindowContent';
 import ModalWindow from '../components/ModalWindow';
 import {loadData, nextLoadData, getPersonData} from '../Utils/dataLoad';
+import {closeModal} from '../Utils/closeModal';
 import {updateLoadStatePeople, updateDataPeople, updateNewDataPeople} from '../redux/peopleSlice';
 
 import './page.css';
@@ -19,10 +21,13 @@ export const People = () => {
   const loading = useSelector(state => state?.people?.isLoading);
   const nextUrl = useSelector(state => state?.people?.data?.next);
 
+  const loadingPerson = useSelector(state => state?.person?.isLoading);
+  const person = useSelector(state => state?.person?.data);
+
   useEffect(() => {
-    setPersonUrlId(params.perid);
+    setPersonUrlId(params.personId);
     if (personUrlId) dispatch(getPersonData(personUrlId));
-  }, [dispatch, params.perid, personUrlId]);
+  }, [dispatch, params.personId, personUrlId]);
 
   useEffect(() => {
     dispatch(
@@ -48,7 +53,11 @@ export const People = () => {
           onClick={loadMore}
         />
       )}
-      {personUrlId && <ModalWindow personUrlId={personUrlId} />}
+      {personUrlId && (
+        <ModalWindow loading={loadingPerson} onWrapperClick={closeModal}>
+          <PersonWindowContent person={person} />
+        </ModalWindow>
+      )}
     </article>
   );
 };

@@ -4,7 +4,9 @@ import {useParams} from 'react-router-dom';
 import Starship from '../components/Starship';
 import Button from '../components/Button';
 import ModalWindow from '../components/ModalWindow';
+import StarshipWindowContent from '../components/WindowContent/StarshipWindowContent';
 import {loadData, nextLoadData, getStarshipData} from '../Utils/dataLoad';
+import {closeModal} from '../Utils/closeModal';
 import {
   updateLoadStateStarships,
   updateDataStarships,
@@ -23,10 +25,13 @@ export const Starships = () => {
   const loading = useSelector(state => state?.starships?.isLoading);
   const nextUrl = useSelector(state => state?.starships?.data?.next);
 
+  const loadingStarship = useSelector(state => state?.starships?.isLoading);
+  const starship = useSelector(state => state?.starship?.data);
+
   useEffect(() => {
-    setStarshipUrlId(params.stid);
+    setStarshipUrlId(params.starshipId);
     if (starshipUrlId) dispatch(getStarshipData(starshipUrlId));
-  }, [dispatch, params.stid, starshipUrlId]);
+  }, [dispatch, params.starshipId, starshipUrlId]);
 
   useEffect(() => {
     dispatch(
@@ -41,6 +46,7 @@ export const Starships = () => {
   const loadMore = () => {
     dispatch(nextLoadData(nextUrl, updateLoadStateStarships, updateNewDataStarships));
   };
+
   return (
     <article>
       <section className="container">
@@ -55,7 +61,11 @@ export const Starships = () => {
           onClick={loadMore}
         />
       )}
-      {starshipUrlId && <ModalWindow starshipUrlId={starshipUrlId} />}
+      {starshipUrlId && (
+        <ModalWindow loading={loadingStarship} onWrapperClick={closeModal}>
+          <StarshipWindowContent starship={starship} />
+        </ModalWindow>
+      )}
     </article>
   );
 };
