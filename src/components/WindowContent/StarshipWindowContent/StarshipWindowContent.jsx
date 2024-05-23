@@ -1,32 +1,35 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {createAppUrl} from '../../../Utils/createAppUrl';
+import StatsBlock from '../../StatsBlock';
+
+import '../../../styles/modalWindow.css';
 
 export const StarshipWindowContent = ({starship}) => {
+  const stats = [
+    {label: 'Manafacturer', value: starship?.manufacturer || 'n/a'},
+    {label: 'Cost', value: starship?.cost_in_credits || 'n/a'},
+    {label: 'Lenght', value: starship?.lenght || 'n/a'},
+    {label: 'Max speed', value: starship?.max_speed || 'n/a'},
+    {label: 'Crew', value: starship?.crew || 'n/a'},
+    {label: 'Passengers', value: starship?.passengers || 'n/a'},
+    {label: 'Cargo capaciry', value: starship?.cargo_capaciry || 'n/a'},
+    {label: 'Consumables', value: starship?.consumables || 'n/a'},
+    {label: 'Hyperdrive rating', value: starship?.hyperdrive_rating || 'n/a'},
+    {label: 'MGLT', value: starship?.MGLT || 'n/a'},
+    {label: 'Starship class', value: starship?.starship_class || 'n/a'},
+  ];
   return (
     <>
       <h1 className="modal__content-title">{starship?.name + '*' + starship?.model}</h1>
       <hr></hr>
       <div className="modal__container">
         <div className="modal__container-block-left">
-          <div className="modal__container-block-left-headline">Stats</div>
-          <ul className="lists">
-            <li className="list">Manafacturer: {starship?.manufacturer}</li>
-            <li className="list">Cost: {starship?.cost_in_credits}</li>
-            <li className="list">Lenght: {starship?.length}</li>
-            <li className="list">Max speed: {starship?.max_atmosphering_speed}</li>
-            <li className="list">Crew: {starship?.crew}</li>
-            <li className="list">Passengers: {starship?.passengers}</li>
-            <li className="list">Cargo capaciry: {starship?.cargo_capacity}</li>
-            <li className="list">Consumables: {starship?.consumables}</li>
-            <li className="list">Hyperdrive rating: {starship?.hyperdrive_rating}</li>
-            <li className="list">MGLT: {starship?.MGLT}</li>
-            <li className="list">Starship class: {starship?.starship_class}</li>
-          </ul>
+          <StatsBlock title="Stats" stats={stats} />
         </div>
         <div className="modal__container-block-right">
-          <div className="block__residents">
-            <div className="block__category">Films:</div>
+          <div className="block__category">
+            <div className="block__category-title">Films:</div>
             <div className="block__category-list">
               <ul>
                 {starship?.pilots?.length > 0 ? (
@@ -43,8 +46,8 @@ export const StarshipWindowContent = ({starship}) => {
               </ul>
             </div>
           </div>
-          <div className="block__films">
-            <div className="block__category">Pilots:</div>
+          <div className="block__category">
+            <div className="block__category-title">Pilots:</div>
             <div className="block__category-list">
               <ul>
                 {starship?.pilots?.length > 0 ? (

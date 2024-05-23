@@ -1,10 +1,23 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {createAppUrl} from '../../../Utils/createAppUrl';
+import StatsBlock from '../../StatsBlock';
 
-import './personWindowContent.css';
+import '../../../styles/modalWindow.css';
 
 export const PersonWindowContent = ({person}) => {
+  const apperances = [
+    {label: 'Hair color', value: person?.hair_color},
+    {label: 'Skin color', value: person?.skin_color},
+    {label: 'Eye color', value: person?.eye_color},
+    {label: 'Gender', value: person?.gender},
+  ];
+
+  const stats = [
+    {label: 'Height', value: person?.height},
+    {label: 'Mass', value: person?.mass},
+  ];
+
   return (
     <>
       <h1 className="modal__content-title">{person?.name}</h1>
@@ -12,33 +25,23 @@ export const PersonWindowContent = ({person}) => {
       <div className="modal__container">
         <div className="modal__container-block-left">
           <div className="modal__container-block-left-top">
-            <div className="modal__container-block-left-headline">Apperance</div>
-            <ul className="lists">
-              <li className="list">Hair color: {person?.hair_color}</li>
-              <li className="list">Skin color: {person?.skin_color}</li>
-              <li className="list">Eye color: {person?.eye_color}</li>
-              <li className="list">Gender: {person?.gender}</li>
-            </ul>
+            <StatsBlock title="Apperance" stats={apperances} />
           </div>
           <div className="modal__container-block-left-bottom">
-            <div className="modal__container-block-left-headline">Stats</div>
-            <ul className="lists">
-              <li className="list">Height: {person?.height}</li>
-              <li className="list">Mass: {person?.mass}</li>
-            </ul>
+            <StatsBlock title="Stats" stats={stats} />
           </div>
         </div>
         <div className="modal__container-block-right">
-          <div className="block__homeword">
-            <div className="block__category">Home world:</div>
+          <div className="block__category">
+            <div className="block__category-title">Home world:</div>
             <div className="block__category-list">
               <NavLink className="link" to={createAppUrl(person?.homeworld?.url)}>
                 {person?.homeworld?.name}
               </NavLink>
             </div>
           </div>
-          <div className="block__films">
-            <div className="block__category">Films:</div>
+          <div className="block__category">
+            <div className="block__category-title">Films:</div>
             <div className="block__category-list">
               <ul>
                 {person?.films?.length > 0 ? (
@@ -55,8 +58,8 @@ export const PersonWindowContent = ({person}) => {
               </ul>
             </div>
           </div>
-          <div className="block__vehicles">
-            <div className="block__category">Vehicles:</div>
+          <div className="block__category">
+            <div className="block__category-title">Vehicles:</div>
             <div className="block__category-list">
               <ul>
                 {person?.vehicles?.length > 0 ? (
@@ -73,8 +76,8 @@ export const PersonWindowContent = ({person}) => {
               </ul>
             </div>
           </div>
-          <div className="block__starships">
-            <div className="block__category">Starships:</div>
+          <div className="block__category">
+            <div className="block__category-title">Starships:</div>
             <div className="block__category-list">
               <ul>
                 {person?.starships?.length > 0 ? (
