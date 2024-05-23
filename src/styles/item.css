@@ -1,7 +1,7 @@
-.person {
+.items__container {
   display: flex;
 }
-.person__card {
+.item__card {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -13,7 +13,7 @@
   padding: 5px;
   cursor: pointer;
 }
-.person__circle {
+.item__circle {
   display: flex;
   width: 100px;
   height: 100px;
@@ -23,11 +23,11 @@
   margin-left: auto;
   margin-right: auto;
 }
-.person__initials {
+.item__initials {
   margin: auto;
   font-size: 30px;
 }
-.person__link {
+.item__link {
   text-decoration: none;
   color: #000000;
 }

@@ -13,7 +13,7 @@ import {
   updateNewDataPlanets,
 } from '../redux/planetsSlice.js';
 
-import './page.css';
+import '../styles/page.css';
 
 export const Planets = () => {
   const [planetUrlId, setPlanetUrlId] = useState(null);
@@ -45,7 +45,7 @@ export const Planets = () => {
 
   return (
     <article>
-      <section className="container">
+      <section className="page__container">
         {planets.map((planet, index) => (
           <Planet key={index} index={index} {...planet} />
         ))}

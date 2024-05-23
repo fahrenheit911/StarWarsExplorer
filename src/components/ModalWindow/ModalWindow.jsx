@@ -2,6 +2,8 @@ import React from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import Loader from '../Loader';
 
+import '../../styles/modalWindow.css';
+
 export const ModalWindow = ({loading, children, onWrapperClick}) => {
   const navigate = useNavigate();
   const location = useLocation();

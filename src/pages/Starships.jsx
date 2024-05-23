@@ -13,7 +13,7 @@ import {
   updateNewDataStarships,
 } from '../redux/starshipsSlice.js';
 
-import './page.css';
+import '../styles/page.css';
 
 export const Starships = () => {
   const [starshipUrlId, setStarshipUrlId] = useState(null);
@@ -49,7 +49,7 @@ export const Starships = () => {
 
   return (
     <article>
-      <section className="container">
+      <section className="page__container">
         {starships.map((starship, index) => (
           <Starship key={index} index={index} {...starship} />
         ))}

@@ -2,7 +2,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {createInitials} from '../../Utils/createInitials';
 
-import './person.css';
+import '../../styles/item.css';
 
 export const Person = ({name, birth_year, gender, url}) => {
   const initials = createInitials(name);
@@ -10,13 +10,13 @@ export const Person = ({name, birth_year, gender, url}) => {
   const personId = url.match(/\/(\d+)/)[1];
 
   return (
-    <section className="person">
-      <NavLink className="person__link" to={'/people/' + personId}>
-        <div className="person__card">
-          <div className="person__circle">
-            <div className="person__initials">{initials}</div>
+    <section className="items__container">
+      <NavLink className="item__link" to={'/people/' + personId}>
+        <div className="item__card">
+          <div className="item__circle">
+            <div className="item__initials">{initials}</div>
           </div>
-          <div className="person__data">
+          <div className="item__data">
             <div>Name: {name}</div>
             <div>Birth year: {birth_year}</div>
             <div>Gender: {gender}</div>

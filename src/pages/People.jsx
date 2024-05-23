@@ -9,7 +9,7 @@ import {loadData, nextLoadData, getPersonData} from '../Utils/dataLoad';
 import {closeModal} from '../Utils/closeModal';
 import {updateLoadStatePeople, updateDataPeople, updateNewDataPeople} from '../redux/peopleSlice';
 
-import './page.css';
+import '../styles/page.css';
 
 export const People = () => {
   const [personUrlId, setPersonUrlId] = useState(null);
@@ -41,7 +41,7 @@ export const People = () => {
 
   return (
     <article>
-      <section className="container">
+      <section className="page__container">
         {people.map((person, index) => (
           <Person key={index} index={index} {...person} />
         ))}

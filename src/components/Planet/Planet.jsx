@@ -2,20 +2,20 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {createInitials} from '../../Utils/createInitials';
 
-import '../Person/person.css';
+import '../../styles/item.css';
 
 export const Planet = ({name, population, url}) => {
   const initials = createInitials(name);
 
   const planetId = url.match(/\/(\d+)/)[1];
   return (
-    <section className="person">
-      <NavLink className="person__link" to={'/planets/' + planetId}>
-        <div className="person__card">
-          <div className="person__circle">
-            <div className="person__initials">{initials}</div>
+    <section className="items__container">
+      <NavLink className="item__link" to={'/planets/' + planetId}>
+        <div className="item__card">
+          <div className="item__circle">
+            <div className="item__initials">{initials}</div>
           </div>
-          <div className="person__data">
+          <div className="item__data">
             <div>Name: {name}</div>
             <div>Population: {population}</div>
           </div>
