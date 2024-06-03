@@ -1,4 +1,5 @@
 .header {
+  display: flex;
   color: #1f95d1;
   padding: 40px;
   background: #eeeeee;
@@ -18,4 +19,9 @@
 .menu__link {
   text-decoration: none;
   color: #1f95d1;
+}
+@media (max-width: 1135px) {
+  .header {
+    justify-content: center;
+  }
 }

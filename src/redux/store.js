@@ -3,6 +3,8 @@ import peopleReducer from './peopleSlice';
 import personReducer from './personSlice';
 import planetsReducer from './planetsSlice';
 import planetReducer from './planetSlice';
+import starshipsReducer from './starshipsSlice';
+import starshipReducer from './starshipSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +12,7 @@ export const store = configureStore({
     person: personReducer,
     planets: planetsReducer,
     planet: planetReducer,
+    starships: starshipsReducer,
+    starship: starshipReducer,
   },
 });

@@ -22,7 +22,7 @@
   position: relative;
   width: 100%;
   width: 700px;
-  height: 400px;
+  min-height: 400px;
   margin: 20px;
   padding: 5px;
   border: solid #c4c2c2 2px;
@@ -60,28 +60,16 @@
   flex-direction: column;
   flex-grow: 10;
 }
-.block__homeword {
-  display: flex;
-  border-bottom: solid 1px;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
-.block__films {
-  display: flex;
-  border-bottom: solid 1px;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
-.block__vehicles {
-  display: flex;
-  border-bottom: solid 1px;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
-.block__starships {
-  display: flex;
-}
 .block__category {
+  display: flex;
+  border-bottom: solid 1px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.block__category:last-of-type {
+  border-bottom: none;
+}
+.block__category-title {
   flex: 1 0 100px;
   text-align: right;
 }
