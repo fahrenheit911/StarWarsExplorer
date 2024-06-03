@@ -3,10 +3,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import Person from '../components/Person';
 import Button from '../components/Button';
+import PersonWindowContent from '../components/WindowContent/PersonWindowContent';
 import ModalWindow from '../components/ModalWindow';
 import {loadData, nextLoadData, getPersonData} from '../Utils/dataLoad';
+import {closeModal} from '../Utils/closeModal';
+import {updateLoadStatePeople, updateDataPeople, updateNewDataPeople} from '../redux/peopleSlice';
 
-import './page.css';
+import '../styles/page.css';
 
 export const People = () => {
   const [personUrlId, setPersonUrlId] = useState(null);
@@ -18,22 +21,27 @@ export const People = () => {
   const loading = useSelector(state => state?.people?.isLoading);
   const nextUrl = useSelector(state => state?.people?.data?.next);
 
-  useEffect(() => {
-    setPersonUrlId(params.id);
-    if (personUrlId) dispatch(getPersonData(personUrlId));
-  }, [dispatch, params.id, personUrlId]);
+  const loadingPerson = useSelector(state => state?.person?.isLoading);
+  const person = useSelector(state => state?.person?.data);
 
   useEffect(() => {
-    dispatch(loadData());
+    setPersonUrlId(params.personId);
+    if (personUrlId) dispatch(getPersonData(personUrlId));
+  }, [dispatch, params.personId, personUrlId]);
+
+  useEffect(() => {
+    dispatch(
+      loadData('https://swapi.py4e.com/api/people', updateLoadStatePeople, updateDataPeople)
+    );
   }, [dispatch]);
 
   const loadMore = () => {
-    dispatch(nextLoadData(nextUrl));
+    dispatch(nextLoadData(nextUrl, updateLoadStatePeople, updateNewDataPeople));
   };
 
   return (
     <article>
-      <section className="container">
+      <section className="page__container">
         {people.map((person, index) => (
           <Person key={index} index={index} {...person} />
         ))}
@@ -41,11 +49,15 @@ export const People = () => {
       {nextUrl && (
         <Button
           title={loading ? 'Loading...' : 'Load more'}
-          onClick={loadMore}
           disabled={loading}
+          onClick={loadMore}
         />
       )}
-      {personUrlId && <ModalWindow personUrlId={personUrlId} />}
+      {personUrlId && (
+        <ModalWindow loading={loadingPerson} onWrapperClick={closeModal}>
+          <PersonWindowContent person={person} />
+        </ModalWindow>
+      )}
     </article>
   );
 };
