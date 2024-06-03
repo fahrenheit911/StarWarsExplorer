@@ -1,4 +1,7 @@
 export const getInitials = name => {
+  if (!name.includes(' ') && !name.includes('-')) {
+    return name.slice(0, 2).toUpperCase();
+  }
   const words = name.split(/[\s-]+/);
   let initials = '';
   for (let i = 0; i < words.length; i++) {
