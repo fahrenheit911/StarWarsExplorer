@@ -7,9 +7,9 @@ import '../../styles/item.css';
 export const Starship = ({name, cost_in_credits: cost, passengers, url}) => {
   const initials = createInitials(name);
 
-  const starshipId = url.match(/\/(\d+)/)[1];
+  const starshipId = url && url.match(/\/(\d+)/)[1];
   return (
-    <section className="items__container">
+    <section className="items__container" data-testid="cardid">
       <NavLink className="item__link" to={'/starships/' + starshipId}>
         <div className="item__card">
           <div className="item__circle">

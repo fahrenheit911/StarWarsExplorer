@@ -1,4 +1,6 @@
 export const createInitials = name => {
+  if (!name) return '';
+
   if (!name.includes(' ') && !name.includes('-')) {
     return name.slice(0, 2).toUpperCase();
   }
