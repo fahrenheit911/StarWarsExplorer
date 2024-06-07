@@ -29,22 +29,22 @@ describe('Starship component', () => {
   });
   test('Should render Starship component with correct initials', () => {
     renderStarship();
-    const initialsElement = screen.queryByText(/SN/);
+    const initialsElement = screen.getByText(/SN/);
     expect(initialsElement).toBeInTheDocument();
   });
   test('Should render Starship component with correct name', () => {
     renderStarship();
-    const nameElement = screen.queryByText(/Name: Starship Name/);
+    const nameElement = screen.getByText(/Name: Starship Name/);
     expect(nameElement).toBeInTheDocument();
   });
   test('hould render Starship component with correct cost', () => {
     renderStarship();
-    const costElement = screen.queryByText(/Cost: 100000/);
+    const costElement = screen.getByText(/Cost: 100000/);
     expect(costElement).toBeInTheDocument();
   });
   test('hould render Starship component with correct passangers', () => {
     renderStarship();
-    const passengersElement = screen.queryByText(/Passangers: 500/);
+    const passengersElement = screen.getByText(/Passangers: 500/);
     expect(passengersElement).toBeInTheDocument();
   });
 });
