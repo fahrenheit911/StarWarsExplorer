@@ -22,7 +22,7 @@ describe('Starship component', () => {
     expect(starshipElement).toBeInTheDocument();
     expect(starshipElement).toHaveClass('items__container');
   });
-  test('SShould render Starship component with correct link attribute', () => {
+  test('Should render Starship component with correct link attribute', () => {
     renderStarship();
     const linkElement = screen.getByRole('link');
     expect(linkElement).toHaveAttribute('href', '/starships/1');
