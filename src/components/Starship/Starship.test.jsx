@@ -37,12 +37,12 @@ describe('Starship component', () => {
     const nameElement = screen.getByText(/Name: Starship Name/);
     expect(nameElement).toBeInTheDocument();
   });
-  test('hould render Starship component with correct cost', () => {
+  test('Should render Starship component with correct cost', () => {
     renderStarship();
     const costElement = screen.getByText(/Cost: 100000/);
     expect(costElement).toBeInTheDocument();
   });
-  test('hould render Starship component with correct passangers', () => {
+  test('Should render Starship component with correct passangers', () => {
     renderStarship();
     const passengersElement = screen.getByText(/Passangers: 500/);
     expect(passengersElement).toBeInTheDocument();

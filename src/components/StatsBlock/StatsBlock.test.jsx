@@ -25,7 +25,7 @@ describe('StatsBlock component', () => {
 
   test('Should render StatsBlock component with list of stats', () => {
     renderStatsBlock();
-    const statsElement1 = screen.getByText(/Label:Value/);
+    const statsElement1 = screen.getByText(/Label:\s*Value/);
     expect(statsElement1).toBeInTheDocument();
   });
 });

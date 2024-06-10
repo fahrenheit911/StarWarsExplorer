@@ -7,7 +7,7 @@ export const StatsBlock = ({title, stats}) => {
       <ul className="lists">
         {stats.map((stat, index) => (
           <li className="list" key={index}>
-            {stat.label}:{stat.value}
+            {stat.label}: {stat.value}
           </li>
         ))}
       </ul>
