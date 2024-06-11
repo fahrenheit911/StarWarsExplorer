@@ -21,18 +21,15 @@ const personData = {
 };
 
 describe('PersonWindowContent component', () => {
-  const renderPersonWindowContent = () =>
+  const renderPersonWindowContent = personData =>
     render(
       <MemoryRouter>
-        <PersonWindowContent person={personData}>
-          <div>Child content</div>
-        </PersonWindowContent>
+        <PersonWindowContent person={personData}></PersonWindowContent>
       </MemoryRouter>
     );
 
   test('Should render with person name', () => {
-    renderPersonWindowContent();
-
+    renderPersonWindowContent(personData);
     const headingElement = screen.getByRole('heading');
     expect(headingElement).toBeInTheDocument();
     const personnameElement = screen.getByText('Person Name');
@@ -40,7 +37,7 @@ describe('PersonWindowContent component', () => {
   });
 
   test('Should render block Appearance with content', () => {
-    renderPersonWindowContent();
+    renderPersonWindowContent(personData);
     const appearanceElement = screen.getByText('Apperance');
     expect(appearanceElement).toBeInTheDocument();
     expect(screen.getByText('Hair color: Blonde')).toBeInTheDocument();
@@ -48,8 +45,9 @@ describe('PersonWindowContent component', () => {
     expect(screen.getByText('Eye color: Blue')).toBeInTheDocument();
     expect(screen.getByText('Gender: Male')).toBeInTheDocument();
   });
+
   test('Should render block Stats with content', () => {
-    renderPersonWindowContent();
+    renderPersonWindowContent(personData);
     const statsElement = screen.getByText('Stats');
     expect(statsElement).toBeInTheDocument();
     expect(screen.getByText('Height: 172')).toBeInTheDocument();
@@ -57,7 +55,7 @@ describe('PersonWindowContent component', () => {
   });
 
   test('Should render block Home world with content', () => {
-    renderPersonWindowContent();
+    renderPersonWindowContent(personData);
     const homeworldElement = screen.getByText('Home world:');
     expect(homeworldElement).toBeInTheDocument();
     const planetNameElement = screen.getByText('Planet Name');
@@ -66,7 +64,7 @@ describe('PersonWindowContent component', () => {
   });
 
   test('Should render block Films with content', () => {
-    renderPersonWindowContent();
+    renderPersonWindowContent(personData);
     const filmsElement = screen.getByText('Films:');
     expect(filmsElement).toBeInTheDocument();
     const filmTitleElement = screen.getByText('Film Title');
@@ -75,19 +73,27 @@ describe('PersonWindowContent component', () => {
   });
 
   test('Should render block Vehicles with content', () => {
-    renderPersonWindowContent();
+    renderPersonWindowContent(personData);
     const vehiclesElement = screen.getByText('Vehicles:');
     expect(vehiclesElement).toBeInTheDocument();
     const vehicleElement = screen.getByText('Vehicle Name');
     expect(vehicleElement).toBeInTheDocument();
     expect(vehicleElement).toHaveAttribute('href', '/vehicles/1');
   });
+
   test('Should render block Starships with content', () => {
-    renderPersonWindowContent();
+    renderPersonWindowContent(personData);
     const starshipsElement = screen.getByText('Starships:');
     expect(starshipsElement).toBeInTheDocument();
     const starshipElement = screen.getByText('Starship Name');
     expect(starshipElement).toBeInTheDocument();
     expect(starshipElement).toHaveAttribute('href', '/starships/1');
+  });
+
+  test('Should render PersonWindowContent component without props', () => {
+    renderPersonWindowContent();
+    expect(screen.getByTestId('films-list')).toHaveTextContent('n/a');
+    expect(screen.getByTestId('vehicles-list')).toHaveTextContent('n/a');
+    expect(screen.getByTestId('starships-list')).toHaveTextContent('n/a');
   });
 });
