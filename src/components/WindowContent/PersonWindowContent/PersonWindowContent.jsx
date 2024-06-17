@@ -42,7 +42,7 @@ export const PersonWindowContent = ({person}) => {
           </div>
           <div className="block__category">
             <div className="block__category-title">Films:</div>
-            <div className="block__category-list">
+            <div className="block__category-list" data-testid="films-list">
               <ul>
                 {person?.films?.length > 0 ? (
                   person?.films?.map((film, index) => (
@@ -60,7 +60,7 @@ export const PersonWindowContent = ({person}) => {
           </div>
           <div className="block__category">
             <div className="block__category-title">Vehicles:</div>
-            <div className="block__category-list">
+            <div className="block__category-list" data-testid="vehicles-list">
               <ul>
                 {person?.vehicles?.length > 0 ? (
                   person?.vehicles?.map((vehicle, index) => (
@@ -78,7 +78,7 @@ export const PersonWindowContent = ({person}) => {
           </div>
           <div className="block__category">
             <div className="block__category-title">Starships:</div>
-            <div className="block__category-list">
+            <div className="block__category-list" data-testid="starships-list">
               <ul>
                 {person?.starships?.length > 0 ? (
                   person?.starships?.map((starship, index) => (

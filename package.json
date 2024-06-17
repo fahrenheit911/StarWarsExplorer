@@ -43,12 +43,18 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-private-property-in-object": "^7.24.5",
+    "@babel/preset-env": "^7.24.6",
+    "@babel/preset-react": "^7.24.6",
+    "@types/testing-library__jest-dom": "^6.0.0",
+    "babel-jest": "^29.7.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "jest": "^27.5.1",
     "prettier": "^1.19.1",
-    "prettier-airbnb-config": "^1.0.0"
+    "prettier-airbnb-config": "^1.0.0",
+    "react-test-renderer": "^18.3.1"
   }
 }
