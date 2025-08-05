@@ -9,7 +9,7 @@ planets where all the events of your favourite movie take place.
 The application uses the Star Wars API (SWAPI) to fetch data and provides a modern, responsive
 interface for exploring the Star Wars universe.
 
-**Live Demo:** https://fahrenheit911.github.io/star-wars-explorer
+**Live Demo:** https://fahrenheit911.github.io/StarWarsExplorer
 
 May the Force be with you!
 
