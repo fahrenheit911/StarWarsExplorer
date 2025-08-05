@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/StarWarsExplorer/static/css/main.e77014ef.css",
+    "main.js": "/StarWarsExplorer/static/js/main.75eb7927.js",
+    "static/media/ComicNeue-Regular.ttf": "/StarWarsExplorer/static/media/ComicNeue-Regular.f6e8f457de11c548d697.ttf",
+    "static/media/ComicNeue-Light.ttf": "/StarWarsExplorer/static/media/ComicNeue-Light.46a29a581742050ea265.ttf",
+    "static/media/ComicNeue-Bold.ttf": "/StarWarsExplorer/static/media/ComicNeue-Bold.a068c58b0b82fcd0ffe6.ttf",
+    "static/media/ComicNeue-BoldItalic.ttf": "/StarWarsExplorer/static/media/ComicNeue-BoldItalic.4b82a63e23574a0a82fd.ttf",
+    "static/media/ComicNeue-Italic.ttf": "/StarWarsExplorer/static/media/ComicNeue-Italic.66e69640946cc5067429.ttf",
+    "static/media/ComicNeue-LightItalic.ttf": "/StarWarsExplorer/static/media/ComicNeue-LightItalic.d243719b62004f8d6916.ttf",
+    "index.html": "/StarWarsExplorer/index.html",
+    "main.e77014ef.css.map": "/StarWarsExplorer/static/css/main.e77014ef.css.map",
+    "main.75eb7927.js.map": "/StarWarsExplorer/static/js/main.75eb7927.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e77014ef.css",
+    "static/js/main.75eb7927.js"
+  ]
+}
