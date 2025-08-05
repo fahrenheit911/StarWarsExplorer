@@ -5,7 +5,7 @@ import {PagesRouter} from '../../routes/PagesRouter';
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/StarWarsExplorer">
       <main>
         <Header />
         <PagesRouter />
